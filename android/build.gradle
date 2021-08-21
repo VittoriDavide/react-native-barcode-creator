@@ -55,4 +55,7 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.google.zxing:core:3.2.1'
+  implementation 'androidx.annotation:annotation:1.1.0'
+
 }

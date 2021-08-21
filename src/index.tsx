@@ -1,7 +1,10 @@
-import { requireNativeComponent, ViewStyle } from 'react-native';
+import { requireNativeComponent, ViewStyle, NativeModules } from 'react-native';
 
 type BarcodeCreatorProps = {
-  color: string;
+  format: string;
+  value: string;
+  background: string;
+  foregroundColor: string;
   style: ViewStyle;
 };
 
@@ -10,3 +13,5 @@ export const BarcodeCreatorViewManager = requireNativeComponent<BarcodeCreatorPr
 );
 
 export default BarcodeCreatorViewManager;
+
+export const BarcodeFormat = NativeModules.BarcodeCreatorViewManager.getConstants();

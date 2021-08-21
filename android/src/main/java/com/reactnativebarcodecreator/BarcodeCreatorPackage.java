@@ -1,6 +1,7 @@
 package com.reactnativebarcodecreator;
 
 import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
@@ -15,8 +16,13 @@ public class BarcodeCreatorPackage implements ReactPackage {
         return Collections.emptyList();
     }
 
-    @Override
+  @Override
+  public List<Class<? extends JavaScriptModule>> createJSModules() {
+    return null;
+  }
+
+  @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Arrays.<ViewManager>asList(new BarcodeCreatorViewManager());
+        return Arrays.<ViewManager>asList(new BarcodeCreatorViewManager(reactContext));
     }
 }

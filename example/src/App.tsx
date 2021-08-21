@@ -1,12 +1,17 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import BarcodeCreatorViewManager from 'react-native-barcode-creator';
+import BarcodeCreatorViewManager, { BarcodeFormat } from 'react-native-barcode-creator';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <BarcodeCreatorViewManager color="#32a852" style={styles.box} />
+      <BarcodeCreatorViewManager
+        value={"100"}
+        background={"#000000"}
+        foregroundColor={"#FFFFFF"}
+        format={BarcodeFormat.QR}
+        style={styles.box} />
     </View>
   );
 }

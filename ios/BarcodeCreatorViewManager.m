@@ -2,6 +2,9 @@
 
 @interface RCT_EXTERN_MODULE(BarcodeCreatorViewManager, RCTViewManager)
 
-RCT_EXPORT_VIEW_PROPERTY(color, NSString)
+RCT_EXPORT_VIEW_PROPERTY(format, NSString)
+RCT_EXPORT_VIEW_PROPERTY(value, NSString)
+RCT_EXPORT_VIEW_PROPERTY(foregroundColor, UIColor)
+RCT_EXPORT_VIEW_PROPERTY(background, UIColor)
 
 @end
