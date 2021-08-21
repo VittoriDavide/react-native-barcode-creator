@@ -6,6 +6,7 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -13,13 +14,11 @@ import java.util.List;
 public class BarcodeCreatorPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
-    }
+      List<NativeModule> modules = new ArrayList<>();
+      modules.add(new BarcodeCreatorModule(reactContext));
 
-  @Override
-  public List<Class<? extends JavaScriptModule>> createJSModules() {
-    return null;
-  }
+      return modules;
+    }
 
   @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
