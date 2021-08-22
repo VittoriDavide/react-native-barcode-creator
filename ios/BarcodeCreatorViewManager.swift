@@ -10,6 +10,8 @@ class BarcodeCreatorViewManager: RCTViewManager {
                 "CODE128": "CICode128BarcodeGenerator",
                 "PDF417": "CIPDF417BarcodeGenerator",
                 "QR": "CIQRCodeGenerator",
+                "EAN13": "CIEANBarcodeGenerator",
+                "UPCA": "CIEANBarcodeGenerator"
         ]
     }
 }
@@ -42,7 +44,9 @@ class BarcodeCreatorView :  UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        CIEANBarcodeGenerator.register()
         addSubview(imageView)
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,11 +59,11 @@ class BarcodeCreatorView :  UIView {
     }
     
     func generateCode() {
-        guard let filter = CIFilter(name: format),
+        guard !value.isEmpty, let filter = CIFilter(name: format),
               let data = value.data(using: .isoLatin1, allowLossyConversion: false) else {
             return
         }
-        
+    
         filter.setValue(data, forKey: "inputMessage")
         
         guard let ciImage = filter.outputImage else {
