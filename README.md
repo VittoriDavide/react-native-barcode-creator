@@ -1,6 +1,6 @@
 # react-native-barcode-creator
 
-Component to generate QRCode, Code128, PDF417 or AZTEC natively for react native.
+Component to generate QRCode, Code128, PDF417, AZTEC, EAN13 or UPCA natively for react native.
 
 ## Installation
 
@@ -23,7 +23,7 @@ import BarcodeCreatorViewManager, { BarcodeFormat } from 'react-native-barcode-c
         foregroundColor={"#FFFFFF"}
         format={BarcodeFormat.QR}
         style={styles.box} />
-        
+
 ```
 
 ## Props
@@ -32,9 +32,11 @@ import BarcodeCreatorViewManager, { BarcodeFormat } from 'react-native-barcode-c
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | **`value`**   | **Mandatory** - The content to add to the Barcode. | _None_                                                                                                              |
 | **`style`**    | Style attributes for the view, as expected in a standard [`View`](https://facebook.github.io/react-native/docs/layout-props.html).                                                                                                                                              | _None_ |
-| **`format`**     | **Mandatory** The format to show in the Barcode, it can be QR, AZTEC, PDF417, CODE128.                                                                                                                                                                                                             | `BarcodeFormat.QR`                                                                                                              |
+| **`format`**     | **Mandatory** The format to show in the Barcode, it can be QR, AZTEC, PDF417, CODE128, EAN13 and UPCA. (EAN-13 should be 13 integers on a string like "5901234123457", UPCA has to be 12 characters "590123412345")                                                                                                                                                                                                            | `BarcodeFormat.QR`                                                                                                              |
 | **`background`** | The Background Color of the Barcode.                                                                                                                                           | `white`                                                                                                             |
-| **`foregroundColor`** | The foreground color to use on the Barcode.                                                                                                                                           | `black`    
+| **`foregroundColor`** | The foreground color to use on the Barcode.                                                                                                                                           | `black`
+
+
 
 ## Contributing
 
