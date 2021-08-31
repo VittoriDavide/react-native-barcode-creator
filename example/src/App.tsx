@@ -8,7 +8,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <BarcodeCreatorViewManager
-        value={""}
+        value={"5901234123457"}
         background={"#000000"}
         foregroundColor={"#FFFFFF"}
         format={BarcodeFormat.EAN13}
