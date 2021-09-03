@@ -9,9 +9,9 @@ export default function App() {
     <View style={styles.container}>
       <BarcodeCreatorViewManager
         value={"5901234123457"}
-        background={"#000000"}
-        foregroundColor={"#FFFFFF"}
-        format={BarcodeFormat.EAN13}
+        background={"#FFFFFF"}
+        foregroundColor={"#000000"}
+        format={BarcodeFormat.QR}
         style={styles.box} />
     </View>
   );

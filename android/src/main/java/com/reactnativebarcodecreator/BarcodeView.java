@@ -44,10 +44,29 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
     updateQRCodeView();
   }
 
-  public void setForegroundColor(String color) {
+  private int handleColor(String color) throws Exception {
+    if(!color.startsWith("#") || (color.length() != 4 && color.length() != 7 && color.length() != 9)) {
+      throw new Exception("Color not supported");
+    }
+    if (color.length() == 4){
+      String sub = color.substring(1, 4);
+      color += sub;
+      color += "FF";
+    }else if (color.length() == 7){
+      color += "FF";
+    }
+    long iColor = Long.parseLong(color.replaceFirst("#", ""), 16);
+    int r = (int) ((iColor >> 24) & 0xFF);
+    int g = (int) ((iColor >> 16) & 0xFF);
+    int b = (int) ((iColor >> 8) & 0xFF);
+    int a = (int) ((iColor) & 0xFF);
+    return Color.argb(a,r, g, b);
+  }
+
+  public void setForegroundColor(String c) {
+    if (c.isEmpty()) return;
     try {
-      int c = Color.parseColor(color);
-      this.foregroundColor = c;
+      this.foregroundColor = handleColor(c);
       updateQRCodeView();
     }catch (Exception e) {
       showException(e);
@@ -55,9 +74,10 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
     }
   }
 
-  public void setBackgroundColor(String background) {
+  public void setBackgroundColor(String c) {
+    if (c.isEmpty()) return;
     try {
-      this.background = Color.parseColor(background);
+      this.background = handleColor(c);
       updateQRCodeView();
     }catch (Exception e) {
       showException(e);
@@ -66,6 +86,8 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
   }
 
   public void updateQRCodeView() {
+    if (content.isEmpty()) return;
+
     MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
     try {
       BitMatrix bitMatrix = multiFormatWriter.encode(content, format, width, height);
