@@ -37,12 +37,12 @@
     "android"
   ],
   "repository": "https://github.com/VittoriDavide/react-native-barcode-creator",
-  "author": "David Vittori <me@vittoridavid.com> (https://github.com/VittoriDavide)",
+  "author": "David Vittori <me@vittoridavid.com> (https://www.vittoridavid.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/VittoriDavide/react-native-barcode-creator/issues"
   },
-  "homepage": "https://github.com/VittoriDavide/react-native-barcode-creator#readme",
+  "homepage": "https://www.vittoridavid.com",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

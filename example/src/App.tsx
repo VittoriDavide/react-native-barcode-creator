@@ -11,7 +11,7 @@ export default function App() {
         value={"5901234123457"}
         background={"#FFFFFF"}
         foregroundColor={"#000000"}
-        format={BarcodeFormat.QR}
+        format={BarcodeFormat.PDF417}
         style={styles.box} />
     </View>
   );
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: 50,
-    height: 50,
+    width: 200,
+    height: 70,
     marginVertical: 20,
   },
 });
