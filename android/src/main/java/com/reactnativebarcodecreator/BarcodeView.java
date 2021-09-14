@@ -44,6 +44,7 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
     updateQRCodeView();
   }
 
+
   private int handleColor(String color) throws Exception {
     if(!color.startsWith("#") || (color.length() != 4 && color.length() != 7 && color.length() != 9)) {
       throw new Exception("Color not supported");
@@ -92,7 +93,7 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
     try {
       BitMatrix bitMatrix = multiFormatWriter.encode(content, format, width, height);
       BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-      Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix, foregroundColor, background);
+      Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix, background, foregroundColor);
       setImageBitmap(bitmap);
     } catch (Exception e) {
       showException(e);
