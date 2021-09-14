@@ -4,7 +4,7 @@ Component to generate QRCode, Code128, PDF417, AZTEC, EAN13 or UPCA natively for
 
 ## Screenshots
 
-![alt text](https://randomstuffshared.s3.eu-west-2.amazonaws.com/Simulator+Screen+Shot+-+iPhone+12+-+2021-09-08+at+16.34.57.png)
+![alt text](https://randomstuffshared.s3.eu-west-2.amazonaws.com/screenshot.png)
 
 
 ## Installation
