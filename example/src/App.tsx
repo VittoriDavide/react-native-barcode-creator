@@ -8,10 +8,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <BarcodeCreatorViewManager
-        value={"5901234123457"}
+        value={"Hello World"}
         background={"#FFFFFF"}
         foregroundColor={"#000000"}
-        format={BarcodeFormat.PDF417}
+        format={BarcodeFormat.AZTEC}
         style={styles.box} />
     </View>
   );
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: 200,
-    height: 70,
+    height: 200,
     marginVertical: 20,
   },
 });

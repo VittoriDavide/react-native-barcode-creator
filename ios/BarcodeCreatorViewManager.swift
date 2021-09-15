@@ -30,6 +30,45 @@ class BarcodeCreatorView :  UIView {
         }
     }
     
+    @objc var valueByteArray: [UInt8]? {
+        didSet {
+            if let valueByteArray = valueByteArray {
+                self.value = String(bytes: valueByteArray, encoding: .isoLatin1) ?? ""
+                generateCode()
+            }
+        }
+    }
+    
+    func encoded(format: String) -> String.Encoding {
+        switch format.uppercased() {
+        case "ISO-8859-1":
+            return .isoLatin1
+        case "UTF-8":
+            return .utf8
+        case "UTF-16":
+            return .utf16
+        default:
+            return .utf16
+        }
+    }
+    
+    @objc var encodedValue: [String: Any]? {
+        didSet {
+            if let base64 = encodedValue?["base64"] as? String,
+               let encodingFormat = encodedValue?["messageEncoded"] as? String{
+                let b64 = base64
+                    .replacingOccurrences(of: "-", with: "+")
+                    .replacingOccurrences(of: "_", with: "/")
+                if let data = Data(base64Encoded: b64, options: .ignoreUnknownCharacters).map ({String(data: $0, encoding: encoded(format: encodingFormat))}) as? String {
+                    self.value = data
+                    generateCode()
+                }
+                
+            }
+        }
+    }
+    
+    
     @objc var foregroundColor: UIColor = .black {
         didSet {
             generateCode()
@@ -46,7 +85,7 @@ class BarcodeCreatorView :  UIView {
         super.init(frame: frame)
         CIEANBarcodeGenerator.register()
         addSubview(imageView)
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,7 +102,7 @@ class BarcodeCreatorView :  UIView {
               let data = value.data(using: .isoLatin1, allowLossyConversion: false) else {
             return
         }
-    
+        
         filter.setValue(data, forKey: "inputMessage")
         
         guard let ciImage = filter.outputImage else {

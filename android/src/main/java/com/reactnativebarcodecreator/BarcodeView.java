@@ -13,6 +13,8 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 
+import static com.reactnativebarcodecreator.Utils.showException;
+
 public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
   int width = 100;
   int height = 100;
@@ -70,7 +72,7 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
       this.foregroundColor = handleColor(c);
       updateQRCodeView();
     }catch (Exception e) {
-      showException(e);
+      showException(context, e);
       e.printStackTrace();
     }
   }
@@ -81,7 +83,7 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
       this.background = handleColor(c);
       updateQRCodeView();
     }catch (Exception e) {
-      showException(e);
+      showException(context, e);
       e.printStackTrace();
     }
   }
@@ -96,17 +98,12 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
       Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix, background, foregroundColor);
       setImageBitmap(bitmap);
     } catch (Exception e) {
-      showException(e);
+      showException(context, e);
       e.printStackTrace();
     }
   }
 
-  private void showException(Exception e) {
-    ExceptionsManagerModule manager = context.getNativeModule(ExceptionsManagerModule.class);
-    WritableNativeMap map = new WritableNativeMap();
-    map.putString("message", e.getMessage());
-    manager.reportException(map);
-  }
+
 
   public BarcodeView(ReactContext context) {
     super(context);
