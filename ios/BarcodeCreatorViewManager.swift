@@ -14,6 +14,9 @@ class BarcodeCreatorViewManager: RCTViewManager {
                 "UPCA": "CIEANBarcodeGenerator"
         ]
     }
+    @objc override static func requiresMainQueueSetup() -> Bool {
+      return true
+    }
 }
 
 class BarcodeCreatorView :  UIView {
