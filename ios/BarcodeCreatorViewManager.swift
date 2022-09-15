@@ -14,7 +14,7 @@ class BarcodeCreatorViewManager: RCTViewManager {
                 "UPCA": "CIEANBarcodeGenerator"
         ]
     }
-    @objc override func requiresMainQueueSetup() -> Bool {
+    override static func requiresMainQueueSetup() -> Bool {
       return true
     }
 }
@@ -119,11 +119,13 @@ class BarcodeCreatorView :  UIView {
         let alphaFilter = CIFilter(name: "CIMaskToAlpha")
         alphaFilter?.setValue(invertFilter?.outputImage, forKey: kCIInputImageKey)
         
-        if let outputImage = alphaFilter?.outputImage  {
+        let context = CIContext(options: nil)
+        
+        if let outputImage = alphaFilter?.outputImage, let cgImage = context.createCGImage(outputImage, from: outputImage.extent)   {
             imageView.tintColor = foregroundColor
             imageView.backgroundColor = background
-            imageView.image = UIImage(ciImage: outputImage, scale: 2.0, orientation: .up)
-                .withRenderingMode(.alwaysTemplate)
+            imageView.image = UIImage(cgImage: cgImage, scale: 2.0, orientation: .up)
+            .withRenderingMode(.alwaysTemplate)
         }
     }
     
