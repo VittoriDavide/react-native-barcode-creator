@@ -18,11 +18,11 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
-    compileSdkVersion safeExtGet('BarcodeCreator_compileSdkVersion', 29)
-    buildToolsVersion safeExtGet('BarcodeCreator_buildToolsVersion', '29.0.2')
+    compileSdkVersion safeExtGet('BarcodeCreator_compileSdkVersion', 30)
+    buildToolsVersion safeExtGet('BarcodeCreator_buildToolsVersion', '30.0.3')
     defaultConfig {
-        minSdkVersion safeExtGet('BarcodeCreator_minSdkVersion', 16)
-        targetSdkVersion safeExtGet('BarcodeCreator_targetSdkVersion', 29)
+        minSdkVersion safeExtGet('BarcodeCreator_minSdkVersion', 23)
+        targetSdkVersion safeExtGet('BarcodeCreator_targetSdkVersion', 30)
         versionCode 1
         versionName "1.0"
 
