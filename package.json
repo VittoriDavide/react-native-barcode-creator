@@ -1,10 +1,10 @@
 {
   "name": "react-native-barcode-creator",
-  "version": "0.1.3",
+  "version": "0.1.6",
   "description": "Component to generate QRCode, Code128, PDF417, AZTEC, EAN-13 and UPC-A natively for react native.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
-  "types": "lib/typescript/index.d.ts",
+  "types": "lib/typescript/src/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
@@ -13,63 +13,81 @@
     "android",
     "ios",
     "cpp",
-    "react-native-barcode-creator.podspec",
-    "!lib/typescript/example",
-    "!android/build",
+    "*.podspec",
     "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
     "!**/__tests__",
     "!**/__fixtures__",
-    "!**/__mocks__"
+    "!**/__mocks__",
+    "!**/.*"
   ],
   "scripts": {
+    "example": "yarn workspace react-native-barcode-creator-example",
     "test": "jest",
-    "typescript": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
-    "release": "release-it",
-    "example": "yarn --cwd example",
-    "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "release": "release-it"
   },
   "keywords": [
     "react-native",
     "ios",
     "android"
   ],
-  "repository": "https://github.com/VittoriDavide/react-native-barcode-creator",
-  "author": "David Vittori <me@vittoridavid.com> (https://www.vittoridavid.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VittoriDavide/react-native-barcode-creator.git"
+  },
+  "author": "David Cesar Vittori <david.vittori@codistica.com> (https://github.com/VittoriDavide)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/VittoriDavide/react-native-barcode-creator/issues"
   },
-  "homepage": "https://www.vittoridavid.com",
+  "homepage": "https://github.com/VittoriDavide/react-native-barcode-creator#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^11.0.0",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "@release-it/conventional-changelog": "^2.0.0",
-    "@types/jest": "^26.0.0",
-    "@types/react": "^16.9.19",
-    "@types/react-native": "0.62.13",
-    "commitlint": "^11.0.0",
-    "eslint": "^7.2.0",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-prettier": "^3.4.1",
-    "husky": "^4.2.5",
-    "jest": "^26.0.1",
-    "pod-install": "^0.1.27",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@evilmartians/lefthook": "^1.5.0",
+    "@react-native/eslint-config": "^0.72.2",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/jest": "^28.1.2",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "0.70.0",
+    "commitlint": "^17.0.2",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.1.1",
+    "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "16.13.1",
-    "react-native": "0.63.4",
-    "react-native-builder-bob": "^0.18.0",
-    "release-it": "^14.2.2",
-    "typescript": "^4.1.3"
+    "react": "18.2.0",
+    "react-native": "0.73.2",
+    "react-native-builder-bob": "^0.20.0",
+    "release-it": "^15.0.0",
+    "turbo": "^1.10.7",
+    "typescript": "^5.0.2"
+  },
+  "resolutions": {
+    "@types/react": "17.0.21"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "packageManager": "yarn@3.6.1",
+  "engines": {
+    "node": ">= 18.0.0"
   },
   "jest": {
     "preset": "react-native",
@@ -77,12 +95,6 @@
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint && yarn typescript"
-    }
   },
   "commitlint": {
     "extends": [
@@ -109,7 +121,7 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@react-native-community",
+      "@react-native",
       "prettier"
     ],
     "rules": {

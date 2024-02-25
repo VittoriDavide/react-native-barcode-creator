@@ -1,4 +1,15 @@
-import { requireNativeComponent, ViewStyle, NativeModules } from 'react-native';
+import {
+  requireNativeComponent,
+  UIManager,
+  Platform,
+  type ViewStyle,
+  NativeModules,
+} from 'react-native';
+
+const LINKING_ERROR =
+  `The package 'react-native-barcode-creator' doesn't seem to be linked. Make sure: \n\n` +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
+  '- You rebuilt the app after installing the package\n'
 
 type BarcodeCreatorProps = {
   format: string;
@@ -8,10 +19,21 @@ type BarcodeCreatorProps = {
   style: ViewStyle;
 };
 
-export const BarcodeCreatorViewManager = requireNativeComponent<BarcodeCreatorProps>(
-'BarcodeCreatorView'
-);
+const ComponentName = 'BarcodeCreatorView';
 
-export default BarcodeCreatorViewManager;
+export const BarcodeCreatorView =
+  UIManager.getViewManagerConfig(ComponentName) != null
+    ? requireNativeComponent<BarcodeCreatorProps>(ComponentName)
+    : () => {
+        throw new Error(LINKING_ERROR);
+      };
+export const BarcodeFormat = {
+  AZTEC: NativeModules.BarcodeCreatorViewManager.getConstants().AZTEC,
+  CODE128: NativeModules.BarcodeCreatorViewManager.getConstants().CODE128,
+  PDF417: NativeModules.BarcodeCreatorViewManager.getConstants().PDF417,
+  QR: NativeModules.BarcodeCreatorViewManager.getConstants().QR,
+  EAN13: NativeModules.BarcodeCreatorViewManager.getConstants().EAN13,
+  UPCA: NativeModules.BarcodeCreatorViewManager.getConstants().UPCA,
+};
 
-export const BarcodeFormat = NativeModules.BarcodeCreatorViewManager.getConstants();
+export type { BarcodeCreatorProps };
