@@ -18,6 +18,8 @@ npx expo install react-native-barcode-creator
 npx expo prebuild
 ```
 
+remember to use the Development Build and not Expo Go
+
 
 ## Usage
 
