@@ -4,7 +4,7 @@
   "description": "Component to generate QRCode, Code128, PDF417, AZTEC, EAN-13 and UPC-A natively for react native.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "lib/typescript/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
