@@ -126,9 +126,13 @@ public class BarcodeView extends androidx.appcompat.widget.AppCompatImageView {
     }
 
     if (color.length() == 4) {
-      String sub = color.substring(1, 4);
-      color += sub;
-      color += "FF";
+      // Expand shorthand #RGB to #RRGGBB by doubling each digit.
+      StringBuilder expanded = new StringBuilder("#");
+      for (int i = 1; i < 4; i++) {
+        char digit = color.charAt(i);
+        expanded.append(digit).append(digit);
+      }
+      color = expanded.append("FF").toString();
     } else if (color.length() == 7) {
       color += "FF";
     }
