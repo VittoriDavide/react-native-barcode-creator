@@ -135,7 +135,8 @@
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "example/expo-env.d.ts"
   ],
   "prettier": {
     "quoteProps": "consistent",
