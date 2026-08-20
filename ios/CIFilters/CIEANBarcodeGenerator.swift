@@ -251,12 +251,18 @@ public class CIEANBarcodeGenerator: CIFilter {
         return checkSum(barcode) == 0
     }
     
+    /// Weights are anchored to the check digit, which is always rightmost: it
+    /// counts x1, the digit left of it x3, and so on alternating. Anchoring on
+    /// the left instead only happens to be correct for odd-length codes, so
+    /// EAN-13 passed while every valid 12-digit UPC-A was rejected.
     private func checkSum(_ barcode: [UInt8]) -> UInt8 {
         var checkSum:UInt8 = 0
+        let lastIndex = barcode.count - 1
         for i in 0..<barcode.count {
-            checkSum = (checkSum + (i % 2 == 0 ? barcode[i] : barcode[i] * 3)) % 10
+            let weighted = (lastIndex - i) % 2 == 1 ? barcode[i] * 3 : barcode[i]
+            checkSum = (checkSum + weighted) % 10
         }
-        
+
         return checkSum
     }
 }

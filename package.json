@@ -1,6 +1,6 @@
 {
   "name": "react-native-barcode-creator",
-  "version": "0.2.0",
+  "version": "0.2.1-beta.0",
   "description": "Component to generate QRCode, Code128, PDF417, AZTEC, EAN-13 and UPC-A natively for react native.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -28,7 +28,7 @@
   "scripts": {
     "example": "yarn workspace react-native-barcode-creator-example",
     "test": "jest",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit -p tsconfig.build.json",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
@@ -37,13 +37,25 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "barcode",
+    "barcode-generator",
+    "qrcode",
+    "qr",
+    "aztec",
+    "code128",
+    "pdf417",
+    "ean13",
+    "upc",
+    "fabric",
+    "new-architecture",
+    "expo"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VittoriDavide/react-native-barcode-creator.git"
   },
-  "author": "David Cesar Vittori <david.vittori@codistica.com> (https://github.com/VittoriDavide)",
+  "author": "David Cesar Vittori <me@vittoridavid.com> (https://github.com/VittoriDavide)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/VittoriDavide/react-native-barcode-creator/issues"
@@ -58,8 +70,7 @@
     "@react-native/eslint-config": "^0.72.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
-    "@types/react": "~17.0.21",
-    "@types/react-native": "0.70.0",
+    "@types/react": "^18.2.0",
     "commitlint": "^17.0.2",
     "del-cli": "^5.0.0",
     "eslint": "^8.4.1",
@@ -74,9 +85,6 @@
     "release-it": "^15.0.0",
     "turbo": "^1.10.7",
     "typescript": "^5.0.2"
-  },
-  "resolutions": {
-    "@types/react": "17.0.21"
   },
   "peerDependencies": {
     "react": "*",
@@ -139,7 +147,8 @@
   },
   "eslintIgnore": [
     "node_modules/",
-    "lib/"
+    "lib/",
+    "example/expo-env.d.ts"
   ],
   "prettier": {
     "quoteProps": "consistent",

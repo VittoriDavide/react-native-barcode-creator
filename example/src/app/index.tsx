@@ -1,5 +1,8 @@
 import { StyleSheet, View } from 'react-native';
-import { BarcodeCreatorView, BarcodeFormat } from 'react-native-barcode-creator';
+import {
+  BarcodeCreatorView,
+  BarcodeFormat,
+} from 'react-native-barcode-creator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
@@ -7,13 +10,21 @@ import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 
 const SQUARE_SAMPLES = [
-  { label: 'QR Code', format: BarcodeFormat.QR, value: 'https://reactnative.dev' },
+  {
+    label: 'QR Code',
+    format: BarcodeFormat.QR,
+    value: 'https://reactnative.dev',
+  },
   { label: 'Aztec', format: BarcodeFormat.AZTEC, value: 'The cake is a lie' },
 ];
 
 const BAR_SAMPLES = [
   { label: 'Code 128', format: BarcodeFormat.CODE128, value: 'REACT-NATIVE' },
-  { label: 'PDF 417', format: BarcodeFormat.PDF417, value: 'To infinity and beyond!' },
+  {
+    label: 'PDF 417',
+    format: BarcodeFormat.PDF417,
+    value: 'To infinity and beyond!',
+  },
   { label: 'EAN-13', format: BarcodeFormat.EAN13, value: '4006381333931' },
   { label: 'UPC-A', format: BarcodeFormat.UPCA, value: '036000291452' },
 ];

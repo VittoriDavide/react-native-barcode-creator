@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/New_Architecture-Fabric_&_Turbo_Modules-000000?style=flat-square&colorA=000000&colorB=888888" alt="new architecture" />
     <a href="https://www.npmjs.com/package/react-native-barcode-creator"><img src="https://img.shields.io/npm/v/react-native-barcode-creator?style=flat-square&colorA=000000&colorB=888888" alt="npm" /></a>
     <a href="https://www.npmjs.com/package/react-native-barcode-creator"><img src="https://img.shields.io/npm/dm/react-native-barcode-creator?style=flat-square&colorA=000000&colorB=888888&label=downloads" alt="downloads" /></a>
-    <a href="https://github.com/nicovitt/react-native-barcode-creator/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/react-native-barcode-creator?style=flat-square&colorA=000000&colorB=888888" alt="license" /></a>
+    <a href="https://github.com/vittoridavide/react-native-barcode-creator/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/react-native-barcode-creator?style=flat-square&colorA=000000&colorB=888888" alt="license" /></a>
   </p>
   <p>Native barcode generation for React Native</p>
   <p><sub>QR · Code128 · PDF417 · AZTEC · EAN-13 · UPC-A</sub></p>

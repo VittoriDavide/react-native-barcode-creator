@@ -17,7 +17,10 @@ export type BarcodeFormatValue =
 
 /** Numeric-only formats and their expected digit lengths. */
 const NUMERIC_FORMAT_RULES: Partial<
-  Record<BarcodeFormatValue, { name: string; minDigits: number; maxDigits: number }>
+  Record<
+    BarcodeFormatValue,
+    { name: string; minDigits: number; maxDigits: number }
+  >
 > = {
   [BarcodeFormat.UPCA]: { name: 'UPC_A', minDigits: 11, maxDigits: 12 },
   [BarcodeFormat.EAN13]: { name: 'EAN_13', minDigits: 12, maxDigits: 13 },
@@ -74,7 +77,9 @@ const getNativeBarcodeCreatorView = (): ComponentType<NativeProps> => {
   if (platform !== 'ios' && platform !== 'android') {
     const UnsupportedBarcodeCreatorView = (() => {
       throw new Error(
-        `react-native-barcode-creator is not supported on platform "${platform ?? 'unknown'}".`
+        `react-native-barcode-creator is not supported on platform "${
+          platform ?? 'unknown'
+        }".`
       );
     }) as ComponentType<NativeProps>;
     NativeBarcodeCreatorView = UnsupportedBarcodeCreatorView;
@@ -84,12 +89,13 @@ const getNativeBarcodeCreatorView = (): ComponentType<NativeProps> => {
   const nativeComponentModule = require('./BarcodeCreatorNativeComponent') as
     | ComponentType<NativeProps>
     | { default?: ComponentType<NativeProps> };
-  const BarcodeCreatorNativeComponent =
-    (typeof nativeComponentModule === 'object' &&
+  const BarcodeCreatorNativeComponent = (
+    typeof nativeComponentModule === 'object' &&
     nativeComponentModule != null &&
     'default' in nativeComponentModule
       ? nativeComponentModule.default
-      : nativeComponentModule) as ComponentType<NativeProps> | undefined;
+      : nativeComponentModule
+  ) as ComponentType<NativeProps> | undefined;
 
   if (BarcodeCreatorNativeComponent == null) {
     throw new Error(
