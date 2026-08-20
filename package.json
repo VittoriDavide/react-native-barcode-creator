@@ -37,13 +37,25 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "barcode",
+    "barcode-generator",
+    "qrcode",
+    "qr",
+    "aztec",
+    "code128",
+    "pdf417",
+    "ean13",
+    "upc",
+    "fabric",
+    "new-architecture",
+    "expo"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VittoriDavide/react-native-barcode-creator.git"
   },
-  "author": "David Cesar Vittori <david.vittori@codistica.com> (https://github.com/VittoriDavide)",
+  "author": "David Cesar Vittori <me@vittoridavid.com> (https://github.com/VittoriDavide)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/VittoriDavide/react-native-barcode-creator/issues"
